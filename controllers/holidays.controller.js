@@ -63,6 +63,7 @@ function isHoliday(type, date) {
 
     } else {
       // Devuelve la fecha validando que sea festivo
+      const isHoliday = allHolidays.includes(date);
       response = {
         "date": date,
         "isHoliday": isHoliday

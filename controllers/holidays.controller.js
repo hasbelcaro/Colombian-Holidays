@@ -111,7 +111,6 @@ function moveToMonday(dateStr) {
 
   // Si no es lunes, movemos la fecha al siguiente lunes
   const daysToAdd = (1 - dayOfWeek + 7) % 7; // Calcula días hasta el siguiente lunes
-  console.log(date, dayOfWeek, daysToAdd);
 
   const movedDate = new Date(date);
   movedDate.setDate(date.getDate() + daysToAdd);

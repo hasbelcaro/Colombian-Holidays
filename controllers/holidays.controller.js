@@ -1,6 +1,6 @@
 const { response } = require("express")
 
-function isHoliday(date) {
+function isHoliday(type, date) {
   return new Promise((resolve, reject) => {
     if (!date) {
       console.error('[holidaysController] Parámetros incompletos');
@@ -51,12 +51,25 @@ function isHoliday(date) {
 
     // Combinar todas las fechas festivas
     const allHolidays = [...fixedHolidays, ...mobileHolidays, ...emilianiHolidays];
-    resolve(allHolidays);
-    // const isHoliday = allHolidays.includes(date);
-    // resolve({
-    //   "date": date,
-    //   "isHoliday": isHoliday
-    // });
+
+    let response = {};
+
+    if (type === 'year') {
+      // Devuelve todos los festivos del año
+      response = {
+        "year": year,
+        "holidays": allHolidays
+      }
+
+    } else {
+      // Devuelve la fecha validando que sea festivo
+      response = {
+        "date": date,
+        "isHoliday": isHoliday
+      }
+    }
+
+    resolve(response);
   });
 };
 
